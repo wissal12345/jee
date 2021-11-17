@@ -4,3 +4,6 @@ fr\grin\tpcustomerapplication\DiscountCode.class
 fr\grin\tpcustomerapplication\MicroMarket.class
 fr\grin\tpcustomerapplication\session\CustomerManager.class
 fr\grin\tpcustomerapplication\Customer.class
+fr\grin\tpcustomerapplication\managedbeans\CustomerMBean.class
+fr\grin\tpcustomerapplication\config\ConfigJSF.class
+.netbeans_automatic_build
