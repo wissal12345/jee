@@ -1,0 +1,6 @@
+fr\grin\tpcustomerapplication\JAXRSConfiguration.class
+fr\grin\tpcustomerapplication\resources\JavaEE8Resource.class
+fr\grin\tpcustomerapplication\DiscountCode.class
+fr\grin\tpcustomerapplication\MicroMarket.class
+fr\grin\tpcustomerapplication\session\CustomerManager.class
+fr\grin\tpcustomerapplication\Customer.class

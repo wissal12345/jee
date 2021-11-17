@@ -19,6 +19,7 @@ import javax.persistence.Query;
 public class CustomerManager {
  @PersistenceContext(unitName = "customerPU")
     private EntityManager em;
+ 
     public List<Customer> getAllCustomers() {
        Query query = em.createNamedQuery("Customer.findAll");
        return query.getResultList();
