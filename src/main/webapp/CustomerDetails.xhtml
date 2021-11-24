@@ -42,9 +42,10 @@
                     <h:outputLabel value="DiscountCode:" for="discountCode" />
                     <h:selectOneMenu id="discountCode" value="#{customerDetailsMBean.details.discountCode}" title="DiscountCode" required="true" requiredMessage="The DiscountCode field is required.">
                         <!-- TODO: update below reference to list of available items-->
-                        <f:selectItems value="#{fixme}"/>
+                        <f:selectItems value="#{customerDetailsMBean.discountCodes}"/>
                     </h:selectOneMenu>
-                   
+                    <h:button id="back" value="Revenir à la liste" outcome="CustomerList"/>
+  <h:commandButton id="update" value="Enregistrer" action="#{customerDetailsMBean.update}"/>
                 </h:panelGrid>
             </h:form>
         </f:view>
