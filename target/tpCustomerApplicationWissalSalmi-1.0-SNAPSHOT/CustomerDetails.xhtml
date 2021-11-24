@@ -15,8 +15,11 @@
     <h:body>
        <f:view>
 
+<h:outputText value="Aucun client avec l'id #{customerDetailsMBean.idCustomer} !" rendered='#{customerDetailsMBean.details == null}'/>
 
-            <h:form>
+
+<h:form rendered='#{customerDetailsMBean.details != null}'>
+
                 <h1><h:outputText value="Create/Edit"/></h1>
                 <h:panelGrid columns="2">
                     <h:outputLabel value="CustomerId:" for="customerId" />
@@ -40,10 +43,14 @@
                     <h:outputLabel value="CreditLimit:" for="creditLimit" />
                     <h:inputText id="creditLimit" value="#{customerDetailsMBean.details.creditLimit}" title="CreditLimit" />
                     <h:outputLabel value="DiscountCode:" for="discountCode" />
-                    <h:selectOneMenu id="discountCode" value="#{customerDetailsMBean.details.discountCode}" title="DiscountCode" required="true" requiredMessage="The DiscountCode field is required.">
-                        <!-- TODO: update below reference to list of available items-->
-                        <f:selectItems value="#{customerDetailsMBean.discountCodes}"/>
-                    </h:selectOneMenu>
+                   <h:selectOneMenu id="discountCode" value="#{customerDetailsMBean.details.discountCode}"   
+                    title="DiscountCode" required="true" 
+                    requiredMessage="The DiscountCode field is required."  
+                    converter="#{customerDetailsMBean.discountCodeConverter}">   
+       <f:selectItems value="#{customerDetailsMBean.discountCodes}"  
+                      var="item"   
+                      itemLabel="#{item.discountCode} : #{item.rate} %" itemValue="#{item}" />  
+   </h:selectOneMenu>
                     <h:button id="back" value="Revenir à la liste" outcome="CustomerList"/>
   <h:commandButton id="update" value="Enregistrer" action="#{customerDetailsMBean.update}"/>
                 </h:panelGrid>

@@ -11,6 +11,9 @@ import fr.grin.tpcustomerapplication.session.DiscountCodeManager;
 import java.io.Serializable;
 import java.util.List;
 import javax.ejb.EJB;
+import javax.faces.component.UIComponent;
+import javax.faces.context.FacesContext;
+import javax.faces.convert.Converter;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
@@ -61,8 +64,30 @@ public class CustomerDetailsMBean implements Serializable {
   }
     /**
    * Retourne la liste de tous les DiscountCode.
-   */  public List<DiscountCode> getDiscountCodes() {
+     * @return 
+   */  
+  public List<DiscountCode> getDiscountCodes() {
     return discountCodeManager.getAllDiscountCodes();
   }
+public Converter<DiscountCode> getDiscountCodeConverter() {
+    return new Converter<DiscountCode>() {
+      /**
+       * Convertit une String en DiscountCode.
+       *
+       * @param value valeur à convertir
+       */
+      public DiscountCode getAsObject(FacesContext context, UIComponent component, String value) {
+        return discountCodeManager.findById(value);
+      }
 
+      /**
+       * Convertit un DiscountCode en String.
+       *
+       * @param value valeur à convertir
+       */
+      public String getAsString(FacesContext context, UIComponent component, DiscountCode value) {
+        return value.getDiscountCode();
+      }
+    };
+  }
 }
